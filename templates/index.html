@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak Baghel | AI/ML Engineer Portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.151.3/three.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static//style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            'neon': '#39FF14',
+                            'purple': '#7B4DFF',
+                            'pink': '#FF00FF',
+                            'teal': '#00F5FF',
+                        },
+                        dark: {
+                            'bg': '#0F1218',
+                            'card': '#1A1F2B',
+                            'border': '#2A2F3B',
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <section id="hero" class="relative min-h-screen flex items-center">
+        <!-- 3D Canvas as Background -->
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full -z-10"></canvas>
+        
+        <div class="container mx-auto px-4 z-10">
+            <div class="max-w-4xl mx-auto text-center md:text-left md:mx-0">
+                <div class="inline-block bg-dark-bg/40 backdrop-blur-sm p-2 rounded-lg mb-4">
+                    <span class="text-accent-neon font-mono text-sm md:text-base tracking-wider">// ARTIFICIAL INTELLIGENCE ENGINEER</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+                    <span class="text-white">Hello, I'm</span>
+                    <div class="dynamic-text text-accent-purple mt-2">
+                        <span id="name-placeholder" class="particle-text">Deepak Baghel</span>
+                    </div>
+                </h1>
+                
+                <p class="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl">
+                    <span id="tagline-placeholder">I specialize in AI, ML, and Data Science, creating intelligent systems that solve complex real-world problems.</span>
+                </p>
+                
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center md:justify-start">
+                    <a href="#projects" class="btn-primary">
+                        View My Work
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        Contact Me
+                        <i class="fas fa-paper-plane ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center z-10">
+            <p class="text-gray-400 text-sm mb-2">Scroll Down</p>
+            <div class="animate-bounce">
+                <i class="fas fa-chevron-down text-accent-neon"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <div class="neural-network-pattern"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="section-heading">
+                <span class="section-subtitle">About Me</span>
+                <h2 class="section-title particle-text">The Mind Behind The Machine</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-16">
+                <div class="about-image-container relative">
+                    <div class="h-80 md:h-96 w-full rounded-lg overflow-hidden relative">
+                        <!-- Profile Image -->
+                        <img src="assets/images/profile.jpeg" alt="Deepak Baghel" class="w-full h-full object-contain bg-dark-card">
+                        <div class="absolute inset-0 border-2 border-accent-purple rounded-lg"></div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-dark-card p-4 rounded-lg flex items-center justify-center">
+                        <div class="w-full h-full relative">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <svg class="w-full h-full" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="3" fill="none" class="text-accent-purple"></circle>
+                                    <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="2" fill="none" class="text-accent-teal"></circle>
+                                    <circle cx="50" cy="50" r="20" stroke="currentColor" stroke-width="1" fill="none" class="text-accent-neon"></circle>
+                                </svg>
+                            </div>
+                            <!-- REPLACE_WITH_YOUR_YEARS_OF_EXPERIENCE -->
+                            <div id="experience-years-placeholder" class="absolute inset-0 flex items-center justify-center text-xl font-bold text-white">5+</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-accent-neon">Innovating at the Intersection of AI and Human Potential</h3>
+                    
+                    <!-- REPLACE_WITH_YOUR_BIO -->
+                    <div id="bio-placeholder" class="space-y-4">
+                        <p class="text-gray-300">I'm a passionate AI/ML Engineer pursuing my B.Tech in Artificial Intelligence and Machine Learning at GL Bajaj Group of Institutions, Mathura. My journey in AI began with a deep fascination for how intelligent systems can transform our world through data-driven solutions.</p>
+                        
+                        <p class="text-gray-300">With hands-on experience from multiple internships in data science and AI development, I've developed expertise in natural language processing, machine learning algorithms, and building end-to-end AI applications.</p>
+                        
+                        <p class="text-gray-300">I'm dedicated to creating innovative AI solutions that address real-world challenges, with a particular focus on building robust retrieval systems, LLM applications, and predictive models.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <!-- REPLACE_WITH_YOUR_DETAILS -->
+                        <div class="about-detail">
+                            <i class="fas fa-user text-accent-purple"></i>
+                            <div>
+                                <h4>Name</h4>
+                                <p id="name-detail-placeholder">Deepak Baghel</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-detail">
+                            <i class="fas fa-envelope text-accent-teal"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p id="email-placeholder">deepbaghel902@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-detail">
+                            <i class="fas fa-map-marker-alt text-accent-pink"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p id="location-placeholder">Mathura, India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-detail">
+                            <i class="fas fa-graduation-cap text-accent-neon"></i>
+                            <div>
+                                <h4>Degree</h4>
+                                <p id="degree-placeholder">B.Tech in AI & ML</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex">
+                        <a href="#" id="resume-link-placeholder" class="btn-primary">
+                            Download CV
+                            <i class="fas fa-download ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- Skills Section -->
+     <section id="skills" class="py-20 bg-dark-card relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-5">
+            <div class="circuit-board-pattern"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="section-heading">
+                <span class="section-subtitle">My Skills</span>
+                <h2 class="section-title particle-text">Technical Capabilities</h2>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 text-white">Technical Expertise</h3>
+                    
+                    <!-- REPLACE_WITH_YOUR_SKILLS_AND_PROFICIENCY -->
+                    <div id="technical-skills-placeholder" class="space-y-6">
+                        <div class="skill-bar">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Machine Learning</span>
+                                <span class="text-accent-neon">90%</span>
+                            </div>
+                            <div class="bg-dark-border h-2 rounded-full overflow-hidden">
+                                <div class="bg-accent-neon h-full rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Generative AI</span>
+                                <span class="text-accent-purple">85%</span>
+                            </div>
+                            <div class="bg-dark-border h-2 rounded-full overflow-hidden">
+                                <div class="bg-accent-purple h-full rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Retrieval-Augmented Generation (RAG)</span>
+                                <span class="text-accent-pink">80%</span>
+                            </div>
+                            <div class="bg-dark-border h-2 rounded-full overflow-hidden">
+                                <div class="bg-accent-pink h-full rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">MLOps & Model Deployment</span>
+                                <span class="text-accent-teal">75%</span>
+                            </div>
+                            <div class="bg-dark-border h-2 rounded-full overflow-hidden">
+                                <div class="bg-accent-teal h-full rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Full-Stack Development (Python, HTML, JS, Tailwind CSS)</span>
+                                <span class="text-accent-neon">70%</span>
+                            </div>
+                            <div class="bg-dark-border h-2 rounded-full overflow-hidden">
+                                <div class="bg-accent-neon h-full rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-white">Tools & Technologies</h3>
+                    
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <h4 class="text-xl font-semibold mb-3 text-accent-neon">Programming</h4>
+                            <div class="tech-card">
+                                <i class="fab fa-python text-accent-neon"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-code text-accent-teal"></i>
+                                <span>C++</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fab fa-java text-accent-pink"></i>
+                                <span>Java</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-database text-accent-purple"></i>
+                                <span>SQL</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-database text-accent-neon"></i>
+                                <span>PostgreSQL</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fab fa-git-alt text-accent-pink"></i>
+                                <span>Git</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fab fa-github text-accent-purple"></i>
+                                <span>GitHub</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex-1">
+                            <h4 class="text-xl font-semibold mb-3 text-accent-purple">AI & ML</h4>
+                            <div class="tech-card">
+                                <i class="fas fa-fire text-accent-pink"></i>
+                                <span>PyTorch</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-robot text-accent-purple"></i>
+                                <span>Hugging Face Transformers</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-search text-accent-teal"></i>
+                                <span>FAISS</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-bolt text-accent-neon"></i>
+                                <span>FastAPI</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-link text-accent-purple"></i>
+                                <span>LangChain</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex-1">
+                            <h4 class="text-xl font-semibold mb-3 text-accent-teal">Data Science</h4>
+                            <div class="tech-card">
+                                <i class="fas fa-table text-accent-pink"></i>
+                                <span>Pandas & NumPy</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-project-diagram text-accent-purple"></i>
+                                <span>Scikit-learn</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-lightbulb text-accent-neon"></i>
+                                <span>XGBoost & LightGBM</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-layer-group text-accent-teal"></i>
+                                <span>Apache Spark (PySpark)</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-chart-area text-accent-pink"></i>
+                                <span>Matplotlib & Seaborn</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex-1">
+                            <h4 class="text-xl font-semibold mb-3 text-accent-pink">Cloud & DevOps</h4>
+                            <div class="tech-card">
+                                <i class="fab fa-google text-accent-purple"></i>
+                                <span>Google Cloud Platform</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fab fa-github text-accent-neon"></i>
+                                <span>GitHub Actions</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-code-branch text-accent-pink"></i>
+                                <span>DVC</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fas fa-bolt text-accent-teal"></i>
+                                <span>FastAPI+Uvicorn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Tree Visualization -->
+            <div class="mt-20">
+                <h3 class="text-2xl font-bold mb-8 text-white">AI/ML Skill Tree</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 bg-dark-bg rounded-lg overflow-hidden border border-dark-border h-[500px]">
+                        <div id="skill-tree-container" class="w-full h-full"></div>
+                    </div>
+                    <div class="bg-dark-bg rounded-lg p-6 border border-dark-border">
+                        <h4 class="text-xl font-semibold mb-4 text-accent-purple">Skill Details</h4>
+                        <div id="skill-details" class="transition-all duration-300">
+                            <p class="text-gray-400">Hover and click on the skill nodes to see details.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ML Interactive Demos -->
+            <div class="mt-20">
+                <h3 class="text-2xl font-bold mb-8 text-white">Interactive ML Demos</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Image Classifier Demo -->
+                    <div class="demo-card p-6">
+                        <h4 class="text-xl font-semibold mb-4 text-accent-neon flex items-center">
+                            <i class="fas fa-paint-brush mr-2"></i>
+                            Image Classifier
+                        </h4>
+                        <p class="text-gray-400 mb-4">Draw a simple shape and see the neural network predict what you've drawn.</p>
+                        <div id="image-classifier-demo" class="mt-4"></div>
+                    </div>
+                    
+                    <!-- Sentiment Analysis Demo -->
+                    <div class="demo-card p-6">
+                        <h4 class="text-xl font-semibold mb-4 text-accent-pink flex items-center">
+                            <i class="fas fa-comment-alt mr-2"></i>
+                            Sentiment Analysis
+                        </h4>
+                        <p class="text-gray-400 mb-4">Enter some text and let the AI analyze its emotional tone.</p>
+                        <div id="sentiment-analysis-demo" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- Projects Section with 3D Models -->
+    <section id="projects" class="py-20 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="section-heading">
+                <span class="section-subtitle">My Work</span>
+                <h2 class="section-title particle-text">Featured Projects</h2>
+            </div>
+            
+            <!-- Harsh's Featured Projects -->
+            <div id="projects-placeholder" class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card">
+                    <div class="project-thumb h-56 bg-dark-card">
+                        <div class="project-3d-container" data-project="neural-network"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Code Assistant AI</h3>
+                        <p>A VSCode extension that uses AI to assist developers with code completion, documentation, and error resolution in real-time.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>OpenAI API</span>
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/HarshMishra-Git/AI-Code_Companion" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                <span>Source Code</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-thumb h-56 bg-dark-card">
+                        <div class="project-3d-container" data-project="data-viz"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Energy Forecasting</h3>
+                        <p>An end-to-end solution for predicting renewable energy production using time series forecasting and environmental data.</p>
+                        <div class="project-tech">
+                            <span>PyTorch</span>
+                            <span>Prophet</span>
+                            <span>FastAPI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/HarshMishra-Git/Energy_Forecasting_load_Balancing" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                <span>Source Code</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-thumb h-56 bg-dark-card">
+                        <div class="project-3d-container" data-project="nlp-model"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>RAGify</h3>
+                        <p>A framework for building retrieval-augmented generation systems that combine knowledge bases with large language models.</p>
+                        <div class="project-tech">
+                            <span>LangChain</span>
+                            <span>Hugging Face</span>
+                            <span>FastAPI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/HarshMishra-Git/RAGify---An-Advance-RAG" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                <span>Source Code</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-thumb h-56 bg-dark-card">
+                        <div class="project-3d-container" data-project="image-recognition"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>SQL Sage AI</h3>
+                        <p>A natural language to SQL query generator that helps users interact with databases using conversational language.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>LLMs</span>
+                            <span>SQLAlchemy</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/HarshMishra-Git/SqlSage-AI" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                <span>Source Code</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-thumb h-56 bg-dark-card">
+                        <div class="project-3d-container" data-project="reinforcement"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>GenAI Workflow Pipeline</h3>
+                        <p>An AI-powered workflow optimization system that intelligently automates, enhances, and scales Generative AI applications for seamless deployment and efficiency.</p>
+                        <div class="project-tech">
+                            <span>Streamlit</span>
+                            <span>LLM</span>
+                            <span>SQLAlchemy</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/HarshMishra-Git/GenAI_WORKFLOW" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                <span>Source Code</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-thumb h-56 bg-dark-card">
+                        <div class="project-3d-container" data-project="chatbot"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Application Load Optimizer</h3>
+                        <p>A smart AI-driven system for forecasting application utilization and dynamically balancing loads to enhance performance and resource efficiency.</p>
+                        <div class="project-tech">
+                            <span>NLP</span>
+                            <span>LLM</span>
+                            <span>Streamlit</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/HarshMishra-Git/Application_Load_Optimizer" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                <span>Source Code</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-dark-card relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="section-heading">
+                <span class="section-subtitle">My Journey</span>
+                <h2 class="section-title particle-text">Professional Experience</h2>
+            </div>
+            
+            <!-- Education & Experience Section -->
+            <div id="experience-placeholder" class="mt-16">
+                <!-- Education Section -->
+                <h3 class="text-2xl font-bold mb-8 text-white">Education</h3>
+                <div class="timeline mb-16">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span>2023 - 2027</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>B.Tech in Artificial Intelligence and Machine Learning</h3>
+                            <h4>GL BAJAJ GROUP OF INSTITUTIONS, MATHURA</h4>
+                            <p>Pursuing a specialized Bachelor's degree in AI and ML with a focus on practical applications and theoretical foundations of artificial intelligence.</p>
+                            <ul class="timeline-highlights">
+                                <li>Active member of the college's AI research group</li>
+                                <li>Completed projects in computer vision, NLP, and Generative AI</li>
+                                <li>Participated in AI/ML hackathons and competitions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Section -->
+                <h3 class="text-2xl font-bold mb-8 text-white">Professional Experience</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span>Aug 2024 - Oct 2024</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Data Science Intern</h3>
+                            <h4>EXTION INFOTECH</h4>
+                            <p>Contributed to the development of data analytics and machine learning solutions for business intelligence applications.</p>
+                            <ul class="timeline-highlights">
+                                <li>Built data pipelines for processing and analyzing large datasets</li>
+                                <li>Developed visualization dashboards using Python and Tableau</li>
+                                <li>Implemented machine learning models for customer segmentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span>Dec 2024 - Jan 2025</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>AI/ML Intern</h3>
+                            <h4>EDUNET FOUNDATION</h4>
+                            <p>Participated in AI research and development projects focused on educational technology applications.</p>
+                            <ul class="timeline-highlights">
+                                <li>Developed NLP models for analyzing student feedback and questions</li>
+                                <li>Created a prototype for an AI-powered tutoring assistant</li>
+                                <li>Contributed to research papers on AI applications in education</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span>Mar 2025 - May 2025</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Machine Learning Intern</h3>
+                            <h4>CREDORA</h4>
+                            <p>Worked on developing machine learning solutions for financial technology applications, focusing on credit risk assessment.</p>
+                            <ul class="timeline-highlights">
+                                <li>Built predictive models for credit scoring using Python and scikit-learn</li>
+                                <li>Developed data preprocessing pipelines for structured financial data</li>
+                                <li>Contributed to the implementation of model deployment workflows</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="absolute inset-0 z-0 opacity-10">
+            <div class="data-flow-pattern"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="section-heading">
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title particle-text">Contact Me</h2>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-white">Let's Connect</h3>
+                    <p class="text-gray-300 mb-8">Have a project in mind or want to discuss AI solutions? Feel free to reach out and I'll get back to you as soon as possible.</p>
+                    
+                    <!-- REPLACE_WITH_YOUR_CONTACT_INFO -->
+                    <div id="contact-info-placeholder" class="space-y-6">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope text-accent-neon"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>deepbaghel902@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt text-accent-purple"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Mathura, India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone text-accent-pink"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>Contact via email</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h4 class="text-xl font-semibold mb-4 text-white">Connect With Me</h4>
+                        
+                        <!-- Social Links -->
+                        <div id="social-links-placeholder" class="flex space-x-4">
+                            <a href="https://github.com/Deepak-baghel84" target="_blank" class="social-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/deepak-baghel-3282a4300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://instagram.com/harsh.__.1202" target="_blank" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-dark-card rounded-lg p-8 shadow-xl shadow-accent-purple/10">
+                        <h3 class="text-2xl font-bold mb-6 text-white">Send Me a Message</h3>
+                        
+                        <form id="contact-form" class="space-y-6">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+                            </div>
+                            
+                            <div id="form-status" class="hidden"></div>
+
+                            <button type="submit" id="submit-btn" class="btn-primary w-full">
+                                Send Message
+                                <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <script>
+                    // Contact form handling
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const contactForm = document.getElementById('contact-form');
+                        const formStatus = document.getElementById('form-status');
+                        const submitBtn = document.getElementById('submit-btn');
+                        
+                        if (contactForm) {
+                            contactForm.addEventListener('submit', function(e) {
+                                e.preventDefault();
+                                
+                                // Disable button and show loading state
+                                submitBtn.disabled = true;
+                                submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Sending...';
+                                
+                                // Get form data
+                                const formData = {
+                                    name: document.getElementById('name').value,
+                                    email: document.getElementById('email').value,
+                                    subject: document.getElementById('subject').value,
+                                    message: document.getElementById('message').value
+                                };
+                                
+                                // Send email via API
+                                fetch('/api/send-email', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(formData)
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    // Show success or error message
+                                    formStatus.classList.remove('hidden', 'text-red-500', 'text-green-500');
+                                    
+                                    if (data.success) {
+                                        // Success
+                                        formStatus.classList.add('text-green-500');
+                                        formStatus.innerHTML = '<p class="p-4 bg-green-900/20 rounded mb-4">' + 
+                                                             '<i class="fas fa-check-circle mr-2"></i> ' + 
+                                                             'Your message has been sent! I will contact you soon.</p>';
+                                        
+                                        // Reset form
+                                        contactForm.reset();
+                                    } else {
+                                        // Error
+                                        formStatus.classList.add('text-red-500');
+                                        formStatus.innerHTML = '<p class="p-4 bg-red-900/20 rounded mb-4">' + 
+                                                             '<i class="fas fa-exclamation-circle mr-2"></i> ' + 
+                                                             'Error: ' + (data.error || 'Could not send message.') + '</p>';
+                                    }
+                                    
+                                    // Reset button
+                                    submitBtn.disabled = false;
+                                    submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane ml-2"></i>';
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    
+                                    // Show error message
+                                    formStatus.classList.remove('hidden');
+                                    formStatus.classList.add('text-red-500');
+                                    formStatus.innerHTML = '<p class="p-4 bg-red-900/20 rounded mb-4">' + 
+                                                         '<i class="fas fa-exclamation-circle mr-2"></i> ' + 
+                                                         'Network error. Please try again later.</p>';
+                                    
+                                    // Reset button
+                                    submitBtn.disabled = false;
+                                    submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane ml-2"></i>';
+                                });
+                            });
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-dark-bg py-8 border-t border-dark-border">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#hero" class="text-xl font-bold text-accent-neon">
+                        <span class="tracking-wider">[AI/ML]</span>
+                        <span class="text-white">Engineer</span>
+                    </a>
+                </div>
+                
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-gray-400">
+                        <!-- REPLACE_WITH_YOUR_NAME -->
+                        &copy; <span id="year"></span> <span id="footer-name-placeholder">Deepak Baghel</span>. All rights reserved.
+                    </p>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="https://github.com/Deepak-baghel84" target="_blank" class="text-gray-400 hover:text-accent-neon transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/deepak-baghel-3282a4300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="text-gray-400 hover:text-accent-neon transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://instagram.com/harsh.__.1202" target="_blank" class="text-gray-400 hover:text-accent-neon transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
