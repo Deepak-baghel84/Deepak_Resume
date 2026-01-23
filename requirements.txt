@@ -1,0 +1,8 @@
+Flask
+PIL
+html
+css
+javascript
+tailwindcss 
+
+
