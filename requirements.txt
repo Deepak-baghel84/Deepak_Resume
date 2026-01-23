@@ -1,8 +1,15 @@
-Flask
-PIL
-html
-css
-javascript
-tailwindcss 
+flask
+flask-mail
 
+## AI/ML Integration
+google-generativeai
+openai
+
+## Utilities
+pillow
+twilio
+python-dotenv
+
+## Deployment
+gunicorn 
 
