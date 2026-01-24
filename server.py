@@ -5,7 +5,8 @@ import re
 from io import BytesIO
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, send_from_directory
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 from PIL import Image
 from flask_mail import Mail, Message
 
@@ -13,21 +14,17 @@ from flask_mail import Mail, Message
 load_dotenv()
 
 # Configure the Gemini API
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
 GEMINI_AVAILABLE = False
+GEMINI_CLIENT = None
+
+# Default model names (override via env if you want)
+GEMINI_TEXT_MODEL = os.environ.get("GEMINI_TEXT_MODEL", "gemini-2.5-flash")
+GEMINI_VISION_MODEL = os.environ.get("GEMINI_VISION_MODEL", GEMINI_TEXT_MODEL)
 
 if GEMINI_API_KEY:
     try:
-        genai.configure(api_key=GEMINI_API_KEY)
-
-        # Initialize the Gemini models
-        generation_config = {"temperature": 0.2, "top_p": 0.8, "top_k": 40}
-
-        image_model = genai.GenerativeModel(
-            model_name="gemini-2.5-pro", generation_config=generation_config)
-
-        text_model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest",
-                                           generation_config=generation_config)
+        GEMINI_CLIENT = genai.Client(api_key=GEMINI_API_KEY)
 
         GEMINI_AVAILABLE = True
         print("✅ Gemini API configured successfully")
@@ -37,6 +34,20 @@ if GEMINI_API_KEY:
 else:
     print(
         "⚠️  GEMINI_API_KEY not found. ML demos will use fallback responses.")
+
+# Shared generation configs
+GENERATION_CONFIG = types.GenerateContentConfig(
+    temperature=0.2,
+    top_p=0.8,
+    top_k=40,
+)
+
+JSON_GENERATION_CONFIG = types.GenerateContentConfig(
+    temperature=0.2,
+    top_p=0.8,
+    top_k=40,
+    response_mime_type="application/json",
+)
 
 app = Flask(__name__, static_folder=".")
 
@@ -126,8 +137,12 @@ def classify_image():
         Respond ONLY with the JSON object.
         """
 
-        response = image_model.generate_content([prompt, image])
-        result_text = response.text
+        response = GEMINI_CLIENT.models.generate_content(
+            model=GEMINI_VISION_MODEL,
+            contents=[image, prompt],
+            config=JSON_GENERATION_CONFIG,
+        )
+        result_text = response.text or ""
 
         # Extract JSON from the response (handling potential markdown code blocks)
         json_pattern = r'```json\s*(.*?)\s*```|```\s*(.*?)\s*```|(\{.*\})'
@@ -229,8 +244,12 @@ def analyze_sentiment():
         Respond ONLY with the JSON object.
         """
 
-        response = text_model.generate_content(prompt)
-        result_text = response.text
+        response = GEMINI_CLIENT.models.generate_content(
+            model=GEMINI_TEXT_MODEL,
+            contents=prompt,
+            config=JSON_GENERATION_CONFIG,
+        )
+        result_text = response.text or ""
 
         # Extract JSON from the response (handling potential markdown code blocks)
         json_pattern = r'```json\s*(.*?)\s*```|```\s*(.*?)\s*```|(\{.*\})'
