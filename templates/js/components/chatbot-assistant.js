@@ -13,24 +13,24 @@ let chatbotVisible = false;
 // Chatbot responses
 const chatbotResponses = {
     greeting: [
-        "Hello! I'm your AI assistant for Harsh's portfolio. How can I help you today?",
-        "Welcome to Harsh's AI/ML portfolio! What would you like to know about?",
-        "Hi there! I'm here to help you learn about Harsh's work and skills. What interests you?"
+        "Hello! I'm your AI assistant for Deepak's portfolio. How can I help you today?",
+        "Welcome to Deepak's AI/ML portfolio! What would you like to know about?",
+        "Hi there! I'm here to help you learn about Deepak's work and skills. What interests you?"
     ],
     portfolio: [
-        "This portfolio showcases Harsh's expertise in AI/ML development, with a focus on building intelligent systems and applications. Feel free to explore the different sections or ask me specific questions about his skills, experience, or projects.",
-        "Harsh's portfolio demonstrates his capabilities in AI/ML engineering, featuring projects in natural language processing, machine learning, and data science. What would you like to know more about?"
+        "This portfolio showcases Deepak's expertise in AI/ML development, with a focus on building intelligent systems and applications. Feel free to explore the different sections or ask me specific questions about his skills, experience, or projects.",
+        "Deepak's portfolio demonstrates his capabilities in AI/ML engineering, featuring projects in natural language processing, machine learning, and data science. What would you like to know more about?"
     ],
     website_tech: [
         "This portfolio website is built using modern technologies including: HTML5 and CSS3 for structure and styling, JavaScript for interactivity, Tailwind CSS for responsive design, Flask backend for server functionality, Render for deployment and hosting. It also incorporates ChatGPT integration and ML techniques for the interactive chatbot assistant.",
         "The tech stack used in this website includes: Frontend: HTML, CSS (Tailwind), JavaScript | Backend: Flask | Deployment: Render hosting | AI Features: ChatGPT integration and ML techniques for enhanced interaction | Additional libraries for animations and 3D effects"
     ],
     education: [
-        "Harsh is pursuing B.Tech in Artificial Intelligence and Machine Learning at GL Bajaj Group of Institutions, Mathura. I can tell you more about specific courses or you can check the Education section for complete details.",
+        "Deepak is pursuing B.Tech in Artificial Intelligence and Machine Learning at GL Bajaj Group of Institutions, Mathura. I can tell you more about specific courses or you can check the Education section for complete details.",
         "Currently enrolled in B.Tech (AI & ML) at GL Bajaj Group of Institutions. Visit the Education section for more information about coursework and achievements."
     ],
     experience: [
-        "Here's Harsh's professional experience:\n• AI/ML Engineer with expertise in building intelligent systems\n• Experience in developing NLP applications and ML models\n• Worked on various projects involving data science and AI\n• Proficient in Python, ML frameworks, and cloud technologies\nCheck the Experience section for a detailed timeline.",
+        "Here's Deepak's professional experience:\n• AI/ML Engineer with expertise in building intelligent systems\n• Experience in developing NLP applications and ML models\n• Worked on various projects involving data science and AI\n• Proficient in Python, ML frameworks, and cloud technologies\nCheck the Experience section for a detailed timeline.",
         "Professional highlights include:\n• ML model development and deployment\n• NLP and computer vision projects\n• Data pipeline development\n• AI application architecture\nVisit the Experience section for more details."
     ],
     skills: [

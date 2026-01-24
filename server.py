@@ -366,8 +366,8 @@ def send_email():
         if not all([name, email, subject, message_content]):
             return jsonify({"error": "All fields are required"}), 400
 
-        # Create message to send to Harsh
-        recipient_email = "harsh.mishra2022@glbajajgroup.org"
+        # Create message to send to Deepak
+        recipient_email = "deepak.baghel2023@glbajajgroup.org"   # Deepak's email
 
         msg = Message(subject=f"Portfolio Contact: {subject}",
                       recipients=[recipient_email],
@@ -379,12 +379,12 @@ def send_email():
             <p>{message_content}</p>
             """)
 
-        # Add reply-to header so Harsh can reply directly to the sender
+        # Add reply-to header so Deepak can reply directly to the sender
         msg.extra_headers = {"Reply-To": email}
 
         # Also send a confirmation email to the sender
         confirmation_msg = Message(
-            subject="Thank you for contacting Harsh Mishra",
+            subject="Thank you for contacting to Deepak",
             recipients=[email],
             html=f"""
             <h3>Thank you for your message!</h3>
@@ -394,7 +394,7 @@ def send_email():
             <p><strong>Subject:</strong> {subject}</p>
             <p><strong>Message:</strong></p>
             <p>{message_content}</p>
-            <p>Best regards,<br>Harsh Mishra<br>AI/ML Engineer</p>
+            <p>Best regards,<br>Deepak Baghel<br>AI/ML Engineer</p>
             """)
 
         # Send both emails
