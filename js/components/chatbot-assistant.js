@@ -369,3 +369,5 @@ function escapeHTML(text) {
     element.textContent = text;
     return element.innerHTML;
 }
+
+
