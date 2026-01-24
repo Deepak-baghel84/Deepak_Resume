@@ -1,8 +1,9 @@
 flask
 flask-mail
+dotenv
 
 ## AI/ML Integration
-google-generativeai
+google-genai
 openai
 
 ## Utilities
