@@ -4,7 +4,7 @@
  */
 
 // Global variables
-let githubUsername = 'your-github-username'; // REPLACE_WITH_YOUR_GITHUB_USERNAME
+let githubUsername = 'Deepak-baghel84'; // REPLACE_WITH_YOUR_GITHUB_USERNAME
 let repoData = [];
 let repoStats = {};
 let repoLanguages = {};
@@ -76,7 +76,7 @@ function loadGitHubData(container) {
     `;
     
     // Check if username is set
-    if (!githubUsername || githubUsername === 'your-github-username') {
+    if (!githubUsername || githubUsername === 'Deepak-baghel84') {
         container.innerHTML = `
             <div class="bg-dark-card p-6 rounded-lg text-center">
                 <i class="fas fa-exclamation-triangle text-accent-pink text-3xl mb-4"></i>
