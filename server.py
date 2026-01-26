@@ -5,6 +5,7 @@ import re
 from io import BytesIO
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 from google import genai
 from google.genai import types
 from PIL import Image
@@ -50,6 +51,7 @@ JSON_GENERATION_CONFIG = types.GenerateContentConfig(
 )
 
 app = Flask(__name__, static_folder=".")
+CORS(app)  # Enable CORS for all routes
 
 # Configure Flask-Mail
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'

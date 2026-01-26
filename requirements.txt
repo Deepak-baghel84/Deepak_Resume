@@ -1,6 +1,6 @@
-flask
 flask-mail
 dotenv
+flask-cors
 
 ## AI/ML Integration
 google-genai
