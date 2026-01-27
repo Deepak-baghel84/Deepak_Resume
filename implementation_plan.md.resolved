@@ -1,0 +1,49 @@
+# Project Deployment Restructuring Plan
+
+## Goal
+Structure the project for a standard production-ready Flask deployment (compatible with platforms like Render, Heroku, etc.), and add comprehensive documentation.
+
+## User Review Required
+> [!WARNING]
+> This change involves moving files ([index.html](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/index.html), [js/](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/js/components/ml-demos.js), `assets/`) into standard Flask folders (`templates/`, [static/](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/server.py#69-73)). This will break file paths if the HTML is opened directly (without the server). The user *must* run the server to view the site after this change.
+
+## Proposed Changes
+
+### File Organization
+-   **Create folder `templates/`**: Move [index.html](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/index.html) here.
+-   **Create folder [static/](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/server.py#69-73)**:
+    -   Move [js/](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/js/components/ml-demos.js) folder here.
+    -   Move `assets/` folder here.
+    -   Move `resume_file/` folder here (so the resume PDF can be served).
+    -   (Note: `style.css` is referenced as [static/style.css](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/static/style.css) in [index.html](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/index.html), so verify if [static](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/server.py#69-73) already exists and what's in it).
+
+### Code Changes
+#### [MODIFY] [server.py](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/server.py)
+-   Change `app` initialization to use default struct (`static_folder='static'`, `template_folder='templates'`).
+-   Update routes:
+    -   `@app.route('/')` should `return render_template('index.html')`.
+    -   Remove the "catch-all" static server route that was insecure.
+
+#### [MODIFY] [index.html](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/index.html) (now in `templates/`)
+-   Update resource links to use [static/](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/server.py#69-73) prefix relative to the root URL (or Jinja2 `url_for` if we want to go full Flask, but keeping it simple with `/static/...` paths allows easier understanding).
+-   Paths to update:
+    -   `js/...` -> `/static/js/...` (or `static/js/...`)
+    -   `assets/...` -> `/static/assets/...`
+    -   `resume_file/...` -> `/static/resume_file/...`
+    -   `static/style.css` -> `/static/style.css` (check if this was already inside `static`).
+
+### New Files
+#### [NEW] [Procfile](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/Procfile)
+-   `web: gunicorn server:app`
+
+#### [NEW] [README.md](file:///c:/Users/deepb/OneDrive/Desktop/resume_project/README.md)
+-   Project setup, installation, running instructions, and deployment guide.
+
+## Verification Plan
+1.  **Move Files**: Execute the moves.
+2.  **Start Server**: Run `python server.py`.
+3.  **Check Site**: Open `http://localhost:5000`.
+    -   Verify images load.
+    -   Verify JS loads (console should be clean).
+    -   Verify CSS loads.
+4.  **Check Resume Download**: Ensure the resume link works.

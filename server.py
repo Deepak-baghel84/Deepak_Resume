@@ -50,11 +50,11 @@ JSON_GENERATION_CONFIG = types.GenerateContentConfig(
     response_mime_type="application/json",
 )
 
-app = Flask(__name__, static_folder=".")
+app = Flask(__name__, template_folder="templates", static_folder="static")
 CORS(app)  # Enable CORS for all routes
 
 # Configure Flask-Mail
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME',
@@ -66,7 +66,7 @@ mail = Mail(app)
 
 
 # Serve the static files
-@app.route('/', defaults={'path': 'index.html'})
+@app.route('/', defaults={'path': 'templates/index.html'})
 @app.route('/<path:path>')
 def serve_static(path):
     return send_from_directory('.', path)
