@@ -1,16 +1,7 @@
-flask-mail
-dotenv
+Flask
 flask-cors
-
-## AI/ML Integration
+flask-mail
 google-genai
-openai
-
-## Utilities
-pillow
-twilio
 python-dotenv
-
-## Deployment
-gunicorn 
-
+pillow
+gunicorn
